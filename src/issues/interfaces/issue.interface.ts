@@ -11,7 +11,7 @@ export interface GithubIssues {
   title: string;
   user: User;
   labels: Label[];
-  state: "open" | "close";
+  state: State;
   locked: boolean;
   assignee: null;
   assignees: unknown[];
@@ -32,6 +32,12 @@ export interface GithubIssues {
   timeline_url: string;
   performed_via_github_app: null;
   state_reason: null;
+}
+
+export enum State {
+  All = "all",
+  Open = "open",
+  Closed = "closed",
 }
 
 export interface Label {

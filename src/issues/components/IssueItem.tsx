@@ -42,7 +42,7 @@ export const IssueItem = ({ issue }: Props) => {
       onMouseEnter={presetData}
       className="animate-fadeIn flex items-center px-2 py-3 mb-5 border rounded-md bg-slate-900 hover:bg-slate-800"
     >
-      {issue.state === "close" ? (
+      {issue.state === "closed" ? (
         <FiCheckCircle size={30} color="green" className="min-w-10" />
       ) : (
         <FiInfo size={30} color="red" className="min-w-10" />

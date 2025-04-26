@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { LoadingSpinners } from "../../share";
 import { IssueList } from "../components/IssueList";
 import { LabelPicker } from "../components/LabelPicker";
 import useIssues from "../hooks/useIssues";
+import { State } from "../interfaces";
 
 export const ListView = () => {
-  const { issuesQuery } = useIssues();
+  const [state, setState] = useState<State>(State.All);
+
+  const { issuesQuery } = useIssues({ state: state });
 
   const issues = issuesQuery.data ?? [];
 
@@ -14,7 +18,11 @@ export const ListView = () => {
         {issuesQuery.isLoading ? (
           <LoadingSpinners />
         ) : (
-          <IssueList issues={issues} />
+          <IssueList
+            issues={issues}
+            onStateChange={(state) => setState(state)}
+            state={state}
+          />
         )}
       </div>
 
